@@ -140,7 +140,7 @@ match init_choice:
     case  "ブン":
         w = np.array([0,0,0,0,0,0,1])
 
-n = st.slider("単語の長さを選択してください",0,100)
+n = st.slider("歌詞の長さを選択してください",0,100)
 lis = generate_dubidubi(NEKOMEME_TRANS_PROB,labels=labels_jp,n=n,initial_state=w)
 
 # カウンタ更新関数
@@ -171,11 +171,12 @@ def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp):
 # ボタンがクリックされたらカウンタを更新
 if st.button('生成'):
     update_counter()
-    draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp)
 # 現在のカウンタ値を表示
 if 'counter' in st.session_state:
     st.write(lis)
-
+    draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp)
+    plt.bar(pd.array(lis).value_counts().index,pd.array(lis).value_counts().values)
+    st.pyplot(plt)
 else:
     st.write('ボタンをクリックして生成')
 

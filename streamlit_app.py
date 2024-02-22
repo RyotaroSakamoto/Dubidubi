@@ -151,9 +151,10 @@ def update_counter():
 
 # ボタンがクリックされたらカウンタを更新
 if st.button('生成'):
+    update_counter()
 
 # 現在のカウンタ値を表示
 if 'counter' in st.session_state:
-    st.write(f'{lis}')
+    st.write(f': {lis}')
 else:
     st.write('ボタンをクリックして生成')

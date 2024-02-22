@@ -6,9 +6,6 @@ import matplotlib.pyplot as plt
 from PIL import Image
 plt.rcParams['font.family'] = 'Meiryo'
 
-with st.sidebar:
-    with st.echo():
-        st.write("This code will be printed to the sidebar.")
 
 st.title('猫ミームの歌詞自動生成')
 

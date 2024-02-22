@@ -12,7 +12,6 @@ st.subheader("マルコフ連鎖を用いたDubidubidoっぽい歌詞生成")
 print()
 st.markdown("---")
 st.subheader("背景")
-st.markdown("---")
 """
 昨今話題の猫ミームに出てくる曲Dubidubiduを聞いていた際、ん？これマルコフ過程じゃね...?
 と思って書き起こしたらそれっぽくなった(図1)ので、この確率モデルを使ってDubidubidoっぽい歌詞生成するプログラムを作ってみました。

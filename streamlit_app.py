@@ -21,7 +21,6 @@ img = Image.open("image/MarcovCatmeme.png")
 st.image(img)
 """
 書き起こしたらそれっぽくなったので、この確率モデルを使ってDubidubidoっぽい歌詞生成するプログラムを作ってみました。
-生成だけしたい方はサイト一番下までお進みください。
 """
 st.markdown("---")
 st.subheader("方法")
@@ -126,8 +125,8 @@ def generate_dubidubi(transition_prob, labels, n, initial_state):
         current_state = np.random.choice(len(labels), p=transition_prob[current_state])
     return word_list
 
-st.header("歌詞の自動生成")
-st.subheader("初期位置と歌詞の長さを選択して、生成ボタンを押してください")
+st.subheader("背景")
+st.h2("初期位置と歌詞の長さを選択して、生成ボタンを押してください")
 
 init_choice = st.selectbox("初期位置を選択してください",labels_jp)
 match init_choice:

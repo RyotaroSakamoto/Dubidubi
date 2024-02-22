@@ -29,8 +29,6 @@ st.subheader("方法")
 
 
 """Python
-
-#遷移確率行列を作成
 NEKOMEME_TRANS_PROB = np.array([
     [1/2,1/2,0,0,0,0,0], #チピ
     [0,1/2,1/2,0,0,0,0], #チャパ
@@ -41,7 +39,6 @@ NEKOMEME_TRANS_PROB = np.array([
     [0.25,0,0,0,0,0,0.75], #ブン
 ])
 NEKOMEME_TRANS_PROB
-
 """
 #遷移確率行列を作成
 NEKOMEME_TRANS_PROB = np.array([

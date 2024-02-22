@@ -59,9 +59,9 @@ labels_jp = ["チピ", "チャパ", "ドゥビ", "ダバ", "マヒ", "コミ", "
 NEKOMEME_TRANS_PROB
 
 """Python
+
 import graphviz
 from graphviz import Digraph
-
 import numpy as np
 
 def Graphviz(prob_matrix, node_label):
@@ -84,7 +84,7 @@ def Graphviz(prob_matrix, node_label):
 # グラフを生成
 g = Graphviz(NEKOMEME_TRANS_PROB, labels)
 
-# g.view()  # 実行環境によってはこの行をコメントアウトまたは修正する必要があるかもしれません
+# g.view()
 g.format = "png"
 g.render("data/nekomeme.png",view=True)
 """

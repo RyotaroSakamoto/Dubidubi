@@ -97,7 +97,7 @@ st.code(code, language='python')
 
 img = Image.open("image/nekomeme.png")
 st.image(img)
-st.subheader("この遷移確率を用いて生成を行います")
+st.write("この遷移確率を用いて生成を行います")
 st.markdown("---")
 
 code = """

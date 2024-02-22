@@ -7,8 +7,12 @@ from PIL import Image
 
 plt.rcParams['font.family'] = 'Meiryo'
 
-st.header('マルコフ連鎖によるDubidubido(猫ミーム)歌詞自動生成プログラム')
+st.header('Dubidubido(猫ミーム)歌詞自動生成')
+st.subheader("マルコフ連鎖を用いたDubidubidoっぽい歌詞生成")
 
+"""
+
+"""
 #遷移確率行列を作成
 NEKOMEME_TRANS_PROB = np.array([
     [1/2,1/2,0,0,0,0,0], #チピ

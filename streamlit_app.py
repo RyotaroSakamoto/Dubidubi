@@ -93,3 +93,16 @@ st.code(code, language='python')
 
 img = Image.open("image/nekomeme.png")
 st.image(img)
+
+
+st.write("初期位置")
+init_choice = st.selectbox("初期位置を選択してください",labels_jp)
+match init_choice:
+    case  "チピ":
+        w = np.array([1,0,0,0,0,0,0])
+
+n = 50
+w = np.array([1,0,0,0,0,0,0])
+lis = generate_dubidubi(NEKOMEME_TRANS_PROB,labels=labels_jp,n=n,initial_state=w)
+for i in lis:
+    print(i)

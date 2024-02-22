@@ -155,6 +155,7 @@ if st.button('生成'):
 
 # 現在のカウンタ値を表示
 if 'counter' in st.session_state:
-    st.write(f': {lis}')
+    st.write(lis)
+    
 else:
     st.write('ボタンをクリックして生成')

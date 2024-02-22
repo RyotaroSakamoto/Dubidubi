@@ -13,7 +13,7 @@ st.subheader("マルコフ連鎖を用いたDubidubidoっぽい歌詞生成")
 print()
 st.markdown("---")
 st.markdown("### 背景")
-st.divider()
+st.markdown("---")
 """
 昨今話題の猫ミームに出てくる曲Dubidubiduを聞いていたら、これマルコフ過程じゃね...?
 """
@@ -23,9 +23,8 @@ st.image(img)
 """
 書き起こしたらそれっぽくなったので、この確率モデルを使ってDubidubidoっぽい歌詞生成するプログラムを作ってみました。
 """
-st.markdown("---")
 st.markdown("### 方法")
-st.divider()
+st.markdown("---")
 """
 マルコフ連鎖を使用して、遷移確率行列からn単語までの歌詞を生成する。
 """
@@ -129,9 +128,8 @@ def generate_dubidubi(transition_prob, labels, n, initial_state):
 
 st.markdown("### 生成")
 
-st.divider()
-
-st.divider("初期位置と歌詞の長さを選択して、生成ボタンを押してください")
+st.markdown("---")
+st.write("初期位置と歌詞の長さを選択して、生成ボタンを押してください")
 
 init_choice = st.selectbox("初期位置を選択してください",labels_jp)
 match init_choice:

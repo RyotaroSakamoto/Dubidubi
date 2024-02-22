@@ -4,8 +4,11 @@ import numpy as np
 import scipy as sp
 import matplotlib.pyplot as plt
 from PIL import Image
-
 plt.rcParams['font.family'] = 'Meiryo'
+
+with st.sidebar:
+    with st.echo():
+        st.write("This code will be printed to the sidebar.")
 
 st.title('猫ミームの歌詞自動生成')
 
@@ -13,7 +16,6 @@ st.subheader("マルコフ連鎖を用いたDubidubidoっぽい歌詞生成")
 print()
 st.markdown("---")
 st.markdown("### 背景")
-st.markdown("---")
 """
 昨今話題の猫ミームに出てくる曲Dubidubiduを聞いていたら、これマルコフ過程じゃね...?
 """
@@ -23,8 +25,8 @@ st.image(img)
 """
 書き起こしたらそれっぽくなったので、この確率モデルを使ってDubidubidoっぽい歌詞生成するプログラムを作ってみました。
 """
-st.markdown("### 方法")
 st.markdown("---")
+st.markdown("### 方法")
 """
 マルコフ連鎖を使用して、遷移確率行列からn単語までの歌詞を生成する。
 """
@@ -128,7 +130,8 @@ def generate_dubidubi(transition_prob, labels, n, initial_state):
 
 st.markdown("### 生成")
 
-st.markdown("---")
+# st.markdown("---")
+
 st.write("初期位置と歌詞の長さを選択して、生成ボタンを押してください")
 
 init_choice = st.selectbox("初期位置を選択してください",labels_jp)

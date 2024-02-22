@@ -128,7 +128,9 @@ def generate_dubidubi(transition_prob, labels, n, initial_state):
     return word_list
 
 st.markdown("### 生成")
+
 st.divider()
+
 st.divider("初期位置と歌詞の長さを選択して、生成ボタンを押してください")
 
 init_choice = st.selectbox("初期位置を選択してください",labels_jp)

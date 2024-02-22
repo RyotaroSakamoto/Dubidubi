@@ -9,9 +9,9 @@ plt.rcParams['font.family'] = 'Meiryo'
 
 st.header('Dubidubido(猫ミーム)歌詞自動生成')
 st.subheader("マルコフ連鎖を用いたDubidubidoっぽい歌詞生成")
-
+st.markdown("---")
 """
-
+昨今話題の猫ミームに出てくる曲Dubidubiduを聞いていた際、ふと、これマルコフ連鎖
 """
 #遷移確率行列を作成
 NEKOMEME_TRANS_PROB = np.array([

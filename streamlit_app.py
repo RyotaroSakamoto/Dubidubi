@@ -175,10 +175,7 @@ if st.button('生成'):
 if 'counter' in st.session_state:
     st.write(lis)
     draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp)
-    
-    fig, ax = plt.figure()
-    fig = plt.bar(pd.array(lis).value_counts().index,pd.array(lis).value_counts().values)
-    st.pyplot(fig)
+
 else:
     st.write('ボタンをクリックして生成')
 

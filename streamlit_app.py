@@ -158,3 +158,23 @@ if 'counter' in st.session_state:
     st.write(lis)
 else:
     st.write('ボタンをクリックして生成')
+
+
+
+
+
+#n回目までの単語の推移を計算
+w_list = np.zeros((7, n))     #推移を記録する箱を作成
+w_list[:,0] = w                 #初期値を記録
+for k in range(1, n):
+    w = w.dot(NEKOMEME_TRANS_PROB)        # 次期の確率の計算
+    w_list[:,k] = w 
+
+
+for i in range(7):
+    plt.plot(w_list[i,:])
+plt.grid()
+plt.xlabel('回数')
+plt.ylabel('確率')
+plt.legend(label)
+plt.show()

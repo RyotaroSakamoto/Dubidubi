@@ -5,5 +5,6 @@ import scipy as sp
 import matplotlib.pyplot as plt
 plt.rcParams['font.family'] = 'Meiryo'
 
-st.subheader('確率分布の実験')
+st.header('マルコフ連鎖によるDubidubido(猫ミーム)歌詞自動生成プログラム')
+
 

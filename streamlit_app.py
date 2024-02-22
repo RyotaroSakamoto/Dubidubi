@@ -150,11 +150,10 @@ def update_counter():
     st.session_state.counter += 1  # カウンタをインクリメント
 
 # ボタンがクリックされたらカウンタを更新
-if st.button('カウンタを増やす'):
-    update_counter()
+if st.button('生成'):
 
 # 現在のカウンタ値を表示
 if 'counter' in st.session_state:
-    st.write(f'カウンタ: {st.session_state.counter}')
+    st.write(f'{lis}')
 else:
-    st.write('ボタンをクリックしてカウンタを開始してください。')
+    st.write('ボタンをクリックして生成')

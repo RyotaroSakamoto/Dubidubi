@@ -149,13 +149,33 @@ def update_counter():
         st.session_state.counter = 0  # セッション状態にカウンタを初期化
     st.session_state.counter += 1  # カウンタをインクリメント
 
+def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp)
+    #n回目までの単語の推移を計算
+    w_list = np.zeros((7, n))     #推移を記録する箱を作成
+    w_list[:,0] = w                 #初期値を記録
+    for k in range(1, n):
+        w = w.dot(NEKOMEME_TRANS_PROB)        # 次期の確率の計算
+        w_list[:,k] = w 
+
+
+    for i in range(7):
+        plt.plot(w_list[i,:])
+    plt.grid()
+    plt.xlabel('回数')
+    plt.ylabel('確率')
+    plt.legend(labels_jp)
+    st.pyplot(plt)
+
+
+
 # ボタンがクリックされたらカウンタを更新
 if st.button('生成'):
     update_counter()
-
+    draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp)
 # 現在のカウンタ値を表示
 if 'counter' in st.session_state:
     st.write(lis)
+
 else:
     st.write('ボタンをクリックして生成')
 
@@ -163,18 +183,3 @@ else:
 
 
 
-#n回目までの単語の推移を計算
-w_list = np.zeros((7, n))     #推移を記録する箱を作成
-w_list[:,0] = w                 #初期値を記録
-for k in range(1, n):
-    w = w.dot(NEKOMEME_TRANS_PROB)        # 次期の確率の計算
-    w_list[:,k] = w 
-
-
-for i in range(7):
-    plt.plot(w_list[i,:])
-plt.grid()
-plt.xlabel('回数')
-plt.ylabel('確率')
-plt.legend(labels_jp)
-st.pyplot(plt)

@@ -13,8 +13,12 @@ print()
 st.markdown("---")
 st.subheader("背景")
 """
-昨今話題の猫ミームに出てくる曲Dubidubiduを聞いていた際、ん？これマルコフ過程じゃね...?
-と思って書き起こしたらそれっぽくなった(図1)ので、この確率モデルを使ってDubidubidoっぽい歌詞生成するプログラムを作ってみました。
+昨今話題の猫ミームに出てくる曲Dubidubiduを聞いていたら、これマルコフ過程じゃね...?
+"""
+img = Image.open("image/MarcovCatmeme.png")
+st.image(img)
+"""
+書き起こしたらそれっぽくなったので、この確率モデルを使ってDubidubidoっぽい歌詞生成するプログラムを作ってみました。
 """
 #遷移確率行列を作成
 NEKOMEME_TRANS_PROB = np.array([

@@ -176,8 +176,9 @@ if 'counter' in st.session_state:
     st.write(lis)
     draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp)
     
-    f = plt.bar(pd.array(lis).value_counts().index,pd.array(lis).value_counts().values)
-    st.pyplot(f)
+    fig, ax = plt.figure()
+    fig = plt.bar(pd.array(lis).value_counts().index,pd.array(lis).value_counts().values)
+    st.pyplot(fig)
 else:
     st.write('ボタンをクリックして生成')
 

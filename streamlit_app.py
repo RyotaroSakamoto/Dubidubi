@@ -123,7 +123,6 @@ def generate_dubidubi(transition_prob, labels, n, initial_state):
     return word_list
 
 
-st.write("初期位置")
 init_choice = st.selectbox("初期位置を選択してください",labels_jp)
 match init_choice:
     case  "チピ":
@@ -144,4 +143,18 @@ match init_choice:
 n = st.slider("単語の長さを選択してください",0,100)
 lis = generate_dubidubi(NEKOMEME_TRANS_PROB,labels=labels_jp,n=n,initial_state=w)
 
-st.write(lis)
+# カウンタ更新関数
+def update_counter():
+    if 'counter' not in st.session_state:
+        st.session_state.counter = 0  # セッション状態にカウンタを初期化
+    st.session_state.counter += 1  # カウンタをインクリメント
+
+# ボタンがクリックされたらカウンタを更新
+if st.button('カウンタを増やす'):
+    update_counter()
+
+# 現在のカウンタ値を表示
+if 'counter' in st.session_state:
+    st.write(f'カウンタ: {st.session_state.counter}')
+else:
+    st.write('ボタンをクリックしてカウンタを開始してください。')

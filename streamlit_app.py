@@ -93,7 +93,7 @@ st.code(code, language='python')
 
 img = Image.open("image/nekomeme.png")
 st.image(img)
-
+st.subheader("この遷移確率を用いて生成を行う")
 
 code = """
 #n単語目までのDubidubido生成
@@ -156,6 +156,5 @@ if st.button('生成'):
 # 現在のカウンタ値を表示
 if 'counter' in st.session_state:
     st.write(lis)
-    
 else:
     st.write('ボタンをクリックして生成')

@@ -61,6 +61,8 @@ labels_jp = ["チピ", "チャパ", "ドゥビ", "ダバ", "マヒ", "コミ", "
 
 NEKOMEME_TRANS_PROB
 
+
+st.write("遷移モデルを可視化")
 code = """
 
 import graphviz

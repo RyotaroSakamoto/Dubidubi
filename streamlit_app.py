@@ -105,4 +105,4 @@ n = 50
 w = np.array([1,0,0,0,0,0,0])
 lis = generate_dubidubi(NEKOMEME_TRANS_PROB,labels=labels_jp,n=n,initial_state=w)
 for i in lis:
-    print(i)
+    st.write(i)

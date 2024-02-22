@@ -28,6 +28,5 @@ labels_jp = ["チピ", "チャパ", "ドゥビ", "ダバ", "マヒ", "コミ", "
 
 NEKOMEME_TRANS_PROB
 
-file_path = st.file_uploader('image/nekomeme.png', type='png')
-img = Image.open(file_path)
+img = Image.open("image/nekomeme.png")
 st.image(img)

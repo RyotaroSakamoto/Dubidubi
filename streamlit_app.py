@@ -65,7 +65,7 @@ from graphviz import Digraph
 import numpy as np
 
 def Graphviz(prob_matrix, node_label):
-    states = len(node_label)  # 状態の数はノードラベルのリストの長さから得る
+    states = len(node_label)
     g = Digraph()
 
     for i in range(states):
@@ -80,13 +80,14 @@ def Graphviz(prob_matrix, node_label):
     g.attr('edge', fontname = 'Meiryo UI')
     return g
 
-
-# グラフを生成
 g = Graphviz(NEKOMEME_TRANS_PROB, labels)
 
-# g.view()
+g.view()
 g.format = "png"
 g.render("data/nekomeme.png",view=True)
+
 """
+
+
 img = Image.open("image/nekomeme.png")
 st.image(img)

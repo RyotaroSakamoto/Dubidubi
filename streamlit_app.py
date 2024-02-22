@@ -58,7 +58,7 @@ labels_jp = ["チピ", "チャパ", "ドゥビ", "ダバ", "マヒ", "コミ", "
 
 NEKOMEME_TRANS_PROB
 
-"""Python
+"""
 
 import graphviz
 from graphviz import Digraph

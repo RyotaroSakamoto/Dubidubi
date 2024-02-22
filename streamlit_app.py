@@ -7,7 +7,8 @@ from PIL import Image
 
 plt.rcParams['font.family'] = 'Meiryo'
 
-st.header('Dubidubido(猫ミーム)歌詞自動生成')
+st.title('猫ミームの歌詞自動生成')
+
 st.subheader("マルコフ連鎖を用いたDubidubidoっぽい歌詞生成")
 print()
 st.markdown("---")

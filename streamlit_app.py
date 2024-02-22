@@ -149,7 +149,7 @@ def update_counter():
         st.session_state.counter = 0  # セッション状態にカウンタを初期化
     st.session_state.counter += 1  # カウンタをインクリメント
 
-def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp)
+def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp):
     #n回目までの単語の推移を計算
     w_list = np.zeros((7, n))     #推移を記録する箱を作成
     w_list[:,0] = w                 #初期値を記録

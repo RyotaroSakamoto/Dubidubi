@@ -95,14 +95,53 @@ img = Image.open("image/nekomeme.png")
 st.image(img)
 
 
+code = """
+#n単語目までのDubidubido生成
+def generate_dubidubi(transition_prob, labels, n, initial_state):
+    # 単語リストを格納する配列を初期化
+    word_list = []
+    # 現在の状態を初期状態で設定
+    current_state = np.random.choice(len(labels), p=initial_state)
+    for _ in range(n):
+        # 現在の状態に基づいて単語を選択し、リストに追加
+        word_list.append(labels[current_state])
+        # 遷移確率行列を使用して次の状態をランダムに選択
+        current_state = np.random.choice(len(labels), p=transition_prob[current_state])
+    return word_list
+"""
+#n単語目までのDubidubido生成
+def generate_dubidubi(transition_prob, labels, n, initial_state):
+    # 単語リストを格納する配列を初期化
+    word_list = []
+    # 現在の状態を初期状態で設定
+    current_state = np.random.choice(len(labels), p=initial_state)
+    for _ in range(n):
+        # 現在の状態に基づいて単語を選択し、リストに追加
+        word_list.append(labels[current_state])
+        # 遷移確率行列を使用して次の状態をランダムに選択
+        current_state = np.random.choice(len(labels), p=transition_prob[current_state])
+    return word_list
+
+
 st.write("初期位置")
 init_choice = st.selectbox("初期位置を選択してください",labels_jp)
 match init_choice:
     case  "チピ":
         w = np.array([1,0,0,0,0,0,0])
+    case  "チャパ":
+        w = np.array([0,1,0,0,0,0,0])
+    case  "ドゥビ":
+        w = np.array([0,0,1,0,0,0,0])
+    case  "ダバ":
+        w = np.array([0,0,0,1,0,0,0])
+    case  "マヒ":
+        w = np.array([0,0,0,0,1,0,0])
+    case  "コミ":
+        w = np.array([0,0,0,0,0,1,0])
+    case  "ブン":
+        w = np.array([0,0,0,0,0,0,1])
 
-n = 50
-w = np.array([1,0,0,0,0,0,0])
+n = st.slider("単語の長さを選択してください",0,100)
 lis = generate_dubidubi(NEKOMEME_TRANS_PROB,labels=labels_jp,n=n,initial_state=w)
-for i in lis:
-    st.write(i)
+
+st.write(lis)

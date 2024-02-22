@@ -28,7 +28,7 @@ st.subheader("方法")
 
 
 
-"""Python
+code = """
 
 NEKOMEME_TRANS_PROB = np.array([
     [1/2,1/2,0,0,0,0,0], #チピ
@@ -42,6 +42,8 @@ NEKOMEME_TRANS_PROB = np.array([
 NEKOMEME_TRANS_PROB
 
 """
+st.code(code, language='python')
+
 #遷移確率行列を作成
 NEKOMEME_TRANS_PROB = np.array([
     [1/2,1/2,0,0,0,0,0], #チピ
@@ -57,7 +59,7 @@ labels_jp = ["チピ", "チャパ", "ドゥビ", "ダバ", "マヒ", "コミ", "
 
 NEKOMEME_TRANS_PROB
 
-"""
+code = """
 
 import graphviz
 from graphviz import Digraph
@@ -86,6 +88,7 @@ g.format = "png"
 g.render("data/nekomeme.png",view=True)
 
 """
+st.code(code, language='python')
 
 
 img = Image.open("image/nekomeme.png")

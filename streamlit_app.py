@@ -176,5 +176,5 @@ for i in range(7):
 plt.grid()
 plt.xlabel('回数')
 plt.ylabel('確率')
-plt.legend(label)
+plt.legend(labels_jp)
 plt.show()

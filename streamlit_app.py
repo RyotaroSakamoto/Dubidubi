@@ -205,7 +205,7 @@ if st.button('分析開始'):
     plt.xlabel('Word')
     plt.ylabel('Count')
     plt.xticks(rotation=45)
-    sns.set(font='IPAexGothic')
+    sns.set(font='Meiryo UI')
     st.pyplot(plt)
 else:
     st.write('ボタンをクリックして分析してみよう')

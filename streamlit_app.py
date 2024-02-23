@@ -160,7 +160,6 @@ df = pd.DataFrame(lis, columns=['Word'])
 # Count the occurrences of each word
 word_counts = df['Word'].value_counts().reset_index()
 word_counts.columns = ['Word', 'Count']
-
 replacement_map = {
     "チピ": "chipi",
     "チャパ": "chapa",
@@ -170,9 +169,8 @@ replacement_map = {
     "コミ": "comi",
     "ブン": "boom"
 }
-
 # Replace the words in the DataFrame
-df['Word'] = df['Word'].replace(replacement_map)
+word_counts = word_counts.replace(replacement_map)
 
 
 def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp):
@@ -193,6 +191,16 @@ def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp):
     st.pyplot(plt)
 
 
+def draw_count_bar(words):
+    
+    plt.figure(figsize=(10, 6))
+    sns.barplot(x='Word', y='Count', data=words, palette='viridis')
+    # plt.title('出現頻度')
+    plt.xlabel('Word')
+    plt.ylabel('Count')
+    plt.xticks(rotation=45)
+    sns.set(font='Meiryo')
+    return st.pyplot(plt)
 
 
 
@@ -210,18 +218,7 @@ st.write("生成結果のデータを可視化して分析してみよう")
 
 #分析
 if st.button('分析開始'):
-
-
-    # plt.figure(figsize=(10, 6))
-    # sns.barplot(x='Word_en', y='Count', data=word_counts, palette='viridis')
-    # # plt.title('出現頻度')
-    # plt.xlabel('Word')
-    # plt.ylabel('Count')
-    # plt.xticks(rotation=45)
-    # sns.set(font='Meiryo')
-    # st.pyplot(plt)
-    print()
-    df
+    draw_count_bar(word_counts)
 else:
     st.write('ボタンをクリックして分析してみよう')
 

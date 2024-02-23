@@ -172,7 +172,7 @@ replacement_map = {
 }
 
 # Replace the words in the DataFrame
-df['Word_en'] = df['Word'].replace(replacement_map)
+df['Word'] = df['Word'].replace(replacement_map)
 
 
 def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp):

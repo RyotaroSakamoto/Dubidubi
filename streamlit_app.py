@@ -4,8 +4,8 @@ import numpy as np
 import scipy as sp
 import matplotlib.pyplot as plt
 from PIL import Image
-# plt.rcParams['font.family'] = 'Meiryo'
-# import seaborn as sns
+import seaborn as sns
+plt.rcParams['font.family'] = 'Meiryo'
 
 st.title('猫ミームの歌詞自動生成')
 
@@ -155,7 +155,11 @@ match init_choice:
 n = st.slider("歌詞の長さを選択してください",0,100)
 lis = generate_dubidubi(NEKOMEME_TRANS_PROB,labels=labels_jp,n=n,initial_state=w)
 song = " ".join(lis)
+df = pd.DataFrame(lis, columns=['Word'])
 
+# Count the occurrences of each word
+word_counts = df['Word'].value_counts().reset_index()
+word_counts.columns = ['Word', 'Count']
 
 def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp):
     #n回目までの単語の推移を計算
@@ -174,13 +178,7 @@ def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp):
     plt.legend(labels_jp)
     st.pyplot(plt)
 
-#リストを集計して棒グラフに
-def draw_count_bar(lis):
-    x = pd.array(lis).value_counts().index
-    height = pd.array(lis).value_counts().values
-    # sns.barplot(x,height)
-    # # fig.set(font="Meiryo UI")
-    # return st.pyplot(sns)
+
 
 
 
@@ -198,7 +196,16 @@ st.write("生成結果のデータを可視化して分析してみよう")
 
 #分析
 if st.button('分析開始'):
-    draw_count_bar(lis)
+
+
+    # Plot
+    plt.figure(figsize=(10, 6))
+    sns.barplot(x='Word', y='Count', data=word_counts, palette='viridis')
+    plt.title('出現頻度')
+    plt.xlabel('Word')
+    plt.ylabel('Count')
+    plt.xticks(rotation=45)
+    st.pyplot(plt)
 else:
     st.write('ボタンをクリックして分析してみよう')
 

@@ -178,7 +178,7 @@ def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp):
 def draw_count_bar(lis):
     x = pd.array(lis).value_counts().index
     height = pd.array(lis).value_counts().values
-    plt.hist(x,height)
+    plt.bar(x,height)
 
 
 

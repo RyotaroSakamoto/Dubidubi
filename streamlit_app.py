@@ -5,7 +5,7 @@ import scipy as sp
 import matplotlib.pyplot as plt
 from PIL import Image
 plt.rcParams['font.family'] = 'Meiryo'
-# import japanize_matplotlib
+import japanize_matplotlib
 
 
 st.title('猫ミームの歌詞自動生成')

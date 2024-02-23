@@ -182,10 +182,6 @@ def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp):
     st.pyplot(plt)
 
 
-st.markdown("---")
-st.subheader("分析")
-st.write("生成結果のデータを可視化して分析してみよう")
-
 
 # 生成
 gen_flug = 0
@@ -199,6 +195,13 @@ if gen_flug == 0:
 else:
     st.write(lis)
     lis
+
+
+
+st.markdown("---")
+st.subheader("分析")
+st.write("生成結果のデータを可視化して分析してみよう")
+
 
 
 #分析

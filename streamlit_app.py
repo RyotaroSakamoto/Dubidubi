@@ -220,6 +220,7 @@ if st.button('分析開始'):
     # plt.xticks(rotation=45)
     # sns.set(font='Meiryo')
     # st.pyplot(plt)
+    print()
 else:
     st.write('ボタンをクリックして分析してみよう')
 

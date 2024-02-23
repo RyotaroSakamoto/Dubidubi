@@ -5,7 +5,7 @@ import scipy as sp
 import matplotlib.pyplot as plt
 from PIL import Image
 # plt.rcParams['font.family'] = 'Meiryo'
-import seaborn as sns
+# import seaborn as sns
 
 st.title('猫ミームの歌詞自動生成')
 
@@ -178,9 +178,9 @@ def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp):
 def draw_count_bar(lis):
     x = pd.array(lis).value_counts().index
     height = pd.array(lis).value_counts().values
-    sns.barplot(x,height)
-    # fig.set(font="Meiryo UI")
-    return st.pyplot(sns)
+    # sns.barplot(x,height)
+    # # fig.set(font="Meiryo UI")
+    # return st.pyplot(sns)
 
 
 

@@ -161,6 +161,20 @@ df = pd.DataFrame(lis, columns=['Word'])
 word_counts = df['Word'].value_counts().reset_index()
 word_counts.columns = ['Word', 'Count']
 
+replacement_map = {
+    "チピ": "chipi",
+    "チャパ": "chapa",
+    "ドゥビ": "dubi",
+    "ダバ": "daba",
+    "マヒ": "Mági",
+    "コミ": "comi",
+    "ブン": "boom"
+}
+
+# Replace the words in the DataFrame
+df['Word_en'] = df['Word'].replace(replacement_map)
+
+
 def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp):
     #n回目までの単語の推移を計算
     w_list = np.zeros((7, n))     #推移を記録する箱を作成
@@ -200,8 +214,8 @@ if st.button('分析開始'):
 
     # Plot
     plt.figure(figsize=(10, 6))
-    sns.barplot(x='Word', y='Count', data=word_counts, palette='viridis')
-    plt.title('出現頻度')
+    sns.barplot(x='Word_en', y='Count', data=word_counts, palette='viridis')
+    # plt.title('出現頻度')
     plt.xlabel('Word')
     plt.ylabel('Count')
     plt.xticks(rotation=45)

@@ -174,24 +174,29 @@ def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp):
     plt.legend(labels_jp)
     st.pyplot(plt)
 
+#リストを集計して棒グラフに
+def draw_count_bar(lis):
+    x = pd.array(lis).value_counts().index
+    height = pd.array(lis).value_counts().values
+    plt.hist(x,height)
+
+
+
 # 生成
 if st.button('生成開始'):
     st.text(song)
-    lis
 else:
     st.write('ボタンをクリックして生成してみよう')
+
+
 
 st.markdown("---")
 st.subheader("分析")
 st.write("生成結果のデータを可視化して分析してみよう")
 
-
-
-
 #分析
 if st.button('分析開始'):
-    st.write(lis)
-    lis
+    draw_count_bar(lis)
 else:
     st.write('ボタンをクリックして分析してみよう')
 

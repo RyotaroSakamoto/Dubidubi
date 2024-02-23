@@ -221,6 +221,7 @@ if st.button('分析開始'):
     # sns.set(font='Meiryo')
     # st.pyplot(plt)
     print()
+    df
 else:
     st.write('ボタンをクリックして分析してみよう')
 

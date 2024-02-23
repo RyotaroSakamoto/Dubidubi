@@ -14,7 +14,7 @@ st.markdown("---")
 st.subheader("背景")
 """
 昨今話題の猫ミームに出てくる曲Dubidubiduを聞いていたら、これマルコフ過程じゃね...?  
-と、言うわけでモデル化してみた。
+と思ったのでモデル化してみた。
 """
 img = Image.open("image/MarcovCatmeme.png")
 st.image(img,width=500)

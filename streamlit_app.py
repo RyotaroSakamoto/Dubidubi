@@ -184,14 +184,16 @@ def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp):
 
 
 # 生成
-gen_flug = 0
-if gen_flug == 0:
+
+if 'count' not in st.session_state:
+    st.session_state["gen_flug"] = 0
+if st.session_state["gen_flug"] == 0:
     if st.button('生成'):
-        gen_flug = 1    
+        st.session_state["gen_flug"] = 1    
     
     else:
         st.write('ボタンをクリックして生成開始')
-elif gen_flug == 1:
+elif st.session_state["gen_flug"] == 1:
     st.write(lis)
     lis
 

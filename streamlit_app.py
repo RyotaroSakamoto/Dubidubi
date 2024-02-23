@@ -182,13 +182,33 @@ def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp):
     st.pyplot(plt)
 
 
+st.markdown("---")
+st.subheader("分析")
+st.write("生成結果のデータを可視化して分析してみよう")
 
-# ボタンがクリックされたらカウンタを更新
-if st.button('生成'):
+
+# 生成
+gen_flug = 0
+if gen_flug == 0:
+
+    if st.button('生成'):
+        gen_flug = 1    
+    
+    else:
+        st.write('ボタンをクリックして生成開始')
+else:
+    st.write(lis)
+    lis
+
+
+#分析
+if st.button('分析開始'):
     st.write(lis)
     lis
 else:
-    st.write('ボタンをクリックして生成')
+    st.write('ボタンをクリックして分析してみよう')
+
+
 
 
 

@@ -182,7 +182,7 @@ def draw_count_bar(lis):
     fig = plt.figure()
     ax = fig.add_subplot(1,1,1)
     ax.bar(x,height)
-    fig.set(font="Meiryo UI")
+    # fig.set(font="Meiryo UI")
     return st.pyplot(fig)
 
 

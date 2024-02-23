@@ -212,15 +212,14 @@ st.write("生成結果のデータを可視化して分析してみよう")
 if st.button('分析開始'):
 
 
-    # Plot
-    plt.figure(figsize=(10, 6))
-    sns.barplot(x='Word_en', y='Count', data=word_counts, palette='viridis')
-    # plt.title('出現頻度')
-    plt.xlabel('Word')
-    plt.ylabel('Count')
-    plt.xticks(rotation=45)
-    sns.set(font='Meiryo')
-    st.pyplot(plt)
+    # plt.figure(figsize=(10, 6))
+    # sns.barplot(x='Word_en', y='Count', data=word_counts, palette='viridis')
+    # # plt.title('出現頻度')
+    # plt.xlabel('Word')
+    # plt.ylabel('Count')
+    # plt.xticks(rotation=45)
+    # sns.set(font='Meiryo')
+    # st.pyplot(plt)
 else:
     st.write('ボタンをクリックして分析してみよう')
 

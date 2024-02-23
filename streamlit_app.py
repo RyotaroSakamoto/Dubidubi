@@ -13,15 +13,25 @@ st.write("マルコフ連鎖を用いて猫ミームの曲っぽい歌詞を作�
 st.markdown("---")
 st.subheader("背景")
 """
-昨今話題の猫ミームに出てくる曲Dubidubiduを聞いていたら、これマルコフ過程じゃね...?
+昨今話題の猫ミームに出てくる曲Dubidubiduを聞いていたら、これマルコフ過程じゃね...?  
+と、言うわけでモデル化してみた。
 """
-
 img = Image.open("image/MarcovCatmeme.png")
 st.image(img,width=500)
 """
 書き起こしたらそれっぽくなったので、この確率モデルを使ってDubidubidoっぽい歌詞生成するプログラムを作ってみました。  
-このマルコフ連鎖は既約性(どの状態からスタートしても有限時間内に任意の状態に遷移可能)を持っているため任意の数で無限に歌詞を生成することが出来ます
+このマルコフ連鎖は既約性(どの状態からスタートしても有限時間内に任意の状態に遷移可能)を持っているため任意の数で無限に歌詞を生成することが出来ます。
 """
+
+
+st.subheader("やりかた")
+markdown = """
+1. 遷移確率行列の定義
+2. 遷移確率行列を元に
+
+"""
+st.markdown(markdown)
+
 st.subheader("方法")
 """
 マルコフ連鎖を使用して、n個の単語の歌詞を生成する。  
@@ -152,11 +162,7 @@ match init_choice:
 n = st.slider("歌詞の長さを選択してください",0,100)
 lis = generate_dubidubi(NEKOMEME_TRANS_PROB,labels=labels_jp,n=n,initial_state=w)
 
-# カウンタ更新関数
-# def update_counter():
-#     if 'counter' not in st.session_state:
-#         st.session_state.counter = 0  # セッション状態にカウンタを初期化
-#     st.session_state.counter += 1  # カウンタをインクリメント
+
 
 def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp):
     #n回目までの単語の推移を計算
@@ -180,14 +186,11 @@ def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp):
 # ボタンがクリックされたらカウンタを更新
 if st.button('生成'):
     st.write(lis)
-    # update_counter()
+    lis
 else:
     st.write('ボタンをクリックして生成')
-    
-# 現在のカウンタ値を表示
-# if 'counter' in st.session_state:
-    
-#     # draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp)
+
+
 
 
 

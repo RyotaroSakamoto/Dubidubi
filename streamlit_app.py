@@ -24,13 +24,6 @@ st.image(img,width=500)
 """
 
 
-st.subheader("やりかた")
-markdown = """
-1. 遷移確率行列の定義
-2. 遷移確率行列を元に
-
-"""
-st.markdown(markdown)
 
 st.subheader("方法")
 """
@@ -161,7 +154,7 @@ match init_choice:
 
 n = st.slider("歌詞の長さを選択してください",0,100)
 lis = generate_dubidubi(NEKOMEME_TRANS_PROB,labels=labels_jp,n=n,initial_state=w)
-
+song = " ".join(lis)
 
 
 def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp):
@@ -183,7 +176,7 @@ def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp):
 
 # 生成
 if st.button('生成開始'):
-    st.write(lis)
+    st.text(song)
     lis
 else:
     st.write('ボタンをクリックして生成してみよう')

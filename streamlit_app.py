@@ -218,6 +218,7 @@ st.write("生成結果のデータを可視化して分析してみよう")
 
 #分析
 if st.button('分析開始'):
+    st.text('出現頻度を集計したヒストグラム')
     draw_count_bar(word_counts)
 else:
     st.write('ボタンをクリックして分析してみよう')

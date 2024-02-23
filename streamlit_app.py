@@ -3,10 +3,10 @@ import pandas as pd
 import numpy as np
 import scipy as sp
 import matplotlib.pyplot as plt
-from PIL import Image
-plt.rcParams['font.family'] = 'Meiryo'
 import japanize_matplotlib
-
+from PIL import Image
+# plt.rcParams['font.family'] = 'Meiryo'
+import seaborn as sns
 
 st.title('猫ミームの歌詞自動生成')
 
@@ -179,11 +179,9 @@ def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp):
 def draw_count_bar(lis):
     x = pd.array(lis).value_counts().index
     height = pd.array(lis).value_counts().values
-    fig = plt.figure()
-    ax = fig.add_subplot(1,1,1)
-    ax.bar(x,height)
+    sns.barplot(x,height)
     # fig.set(font="Meiryo UI")
-    return st.pyplot(fig)
+    return st.pyplot(sns)
 
 
 

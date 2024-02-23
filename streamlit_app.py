@@ -179,6 +179,7 @@ def draw_count_bar(lis):
     x = pd.array(lis).value_counts().index
     height = pd.array(lis).value_counts().values
     plt.bar(x,height)
+    return st.pyplot(plt)
 
 
 

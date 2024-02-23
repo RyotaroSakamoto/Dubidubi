@@ -176,7 +176,7 @@ def draw_plot(n,w,NEKOMEME_TRANS_PROB,labels_jp):
 
 # 生成
 if st.button('生成開始'):
-    st.text(song)
+    st.write(song)
     lis
 else:
     st.write('ボタンをクリックして生成してみよう')

@@ -207,6 +207,8 @@ def draw_count_bar(words):
 # 生成
 if st.button('生成開始'):
     st.text(song)
+    for word in lis:
+        st.write(word)
 else:
     st.write('ボタンをクリックして生成してみよう')
 

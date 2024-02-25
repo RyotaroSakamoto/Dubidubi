@@ -224,9 +224,7 @@ draw_count_bar(word_counts)
 
 
 st.markdown("---")
-# st.write("思いつきでサクッと作ったので、超適当な作りです。")
 st.write("連絡等ありましたら下記メールアドレスまでお願いします")
-# st.write("Twitter:[Twitter](https://twitter.com/Frandle_256)")
 st.write("mail:frandle256@gmail.com")
 st.markdown("---")
 st.subheader("参考にさせていただいたサイト様")

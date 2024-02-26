@@ -205,6 +205,20 @@ def draw_count_bar(words):
     sns.set(font='Meiryo')
     return st.pyplot(plt)
 
+def text_to_zundamon(song):
+    url = "https://api.tts.quest/v3/voicevox/synthesis"
+
+    # リクエストパラメータ
+    params = {
+        "text": f"{song}",
+        "speaker": 3
+    }
+    response = requests.post(url, params=params)
+    response = response.content.decode() #バイト文字列からデコード
+    res_dic = json.loads(response)
+    mp3_url =  res_dic["mp3StreamingUrl"]
+    audio_data = requests.get(mp3_url).content
+    return st.audio(audio_data)
 
 
 # 生成
@@ -212,6 +226,7 @@ if st.button('生成開始'):
     # st.text(song)
     for word in lis:
         st.write(word)
+    text_to_zundamon(song)
 else:
     st.write('ボタンをクリックして生成してみよう')
 
@@ -224,21 +239,7 @@ st.write("生成結果のデータを可視化して分析してみよう")
 #分析
 draw_count_bar(word_counts)
 
-url = "https://api.tts.quest/v3/voicevox/synthesis"
 
-# リクエストパラメータ
-params = {
-    "text": f"{song}",
-    "speaker": 3
-}
-st.write(song)
-response = requests.post(url, params=params)
-response = response.content.decode() #バイト文字列からデコード
-res_dic = json.loads(response)
-st.write(res_dic)
-mp3_url =  res_dic["mp3StreamingUrl"]
-audio_data = requests.get(mp3_url).content
-st.audio(audio_data)
 
 st.markdown("---")
 st.write("連絡等ありましたら下記メールアドレスまでお願いします")

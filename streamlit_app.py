@@ -235,6 +235,7 @@ st.write(song)
 response = requests.post(url, params=params)
 response = response.content.decode() #バイト文字列からデコード
 res_dic = json.loads(response)
+st.write(res_dic)
 mp3_url =  res_dic["mp3StreamingUrl"]
 audio_data = requests.get(mp3_url).content
 st.audio(audio_data)

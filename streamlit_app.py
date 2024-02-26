@@ -252,7 +252,7 @@ st.markdown("[ウィキベディア:マルコフ連鎖](https://ja.wikipedia.org
 st.markdown("[【道を開けろ】AIでコムドットやまと風の名言を作ろう（敬称略）](https://www.youtube.com/watch?v=x5AwzoQgt3E&t=109s&pp=ygUV44Oe44Or44Kz44OV6YCj6Y6W44CA)")
 
 st.markdown("---")
-st.write("ずんだもん読み上げ/VOICEVOX")
+st.write("ずんだもん読み上げ/VOICEVOX https://voicevox.hiroshiba.jp/")
 st.write("使用API https://voicevox.su-shiki.com/su-shikiapis/ttsquest/")
 
 

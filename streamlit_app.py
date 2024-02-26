@@ -226,7 +226,8 @@ if st.button('生成開始'):
     # st.text(song)
     for word in lis:
         st.write(word)
-    st.write("ずんだもん読み上げ機能を追加しました(テスト)")
+    st.markdown("---")
+    st.write("ずんだもん読み上げ機能を追加しました(少し時間がかかります)")
     text_to_zundamon(song)
 else:
     st.write('ボタンをクリックして生成してみよう')

@@ -13,44 +13,6 @@ import json
 st.title('猫ミームの歌詞自動生成')
 
 st.write("マルコフ連鎖を用いて猫ミームの曲っぽい歌詞を作ってみよう")
-st.markdown("---")
-st.subheader("背景")
-"""
-昨今話題の猫ミームに出てくる曲Dubidubiduを聞いていたら、これマルコフ過程じゃね...?  
-と思ったのでモデル化してみた。
-"""
-img = Image.open("image/MarcovCatmeme.png")
-st.image(img,width=500)
-"""
-書き起こしたらそれっぽくなったので、この確率モデルを使ってDubidubiduっぽい歌詞生成するプログラムを作ってみました。  
-このマルコフ連鎖は既約性(どの状態からスタートしても有限時間内に任意の状態に遷移可能)を持っているため任意の数で無限に歌詞を生成することが出来ます。
-"""
-
-
-st.markdown("---")
-st.subheader("方法")
-"""
-マルコフ連鎖を使用して、n個の単語の歌詞を生成する。  
-遷移確率行列を定義:
-"""
-
-
-
-code = """
-
-NEKOMEME_TRANS_PROB = np.array([
-    [1/2,1/2,0,0,0,0,0], #チピ
-    [0,1/2,1/2,0,0,0,0], #チャパ
-    [0,0,1/2,1/4,0,0,1/4], #ドゥビ
-    [0,0,0,1/2,1/2,0,0], #ダバ
-    [0,0,0,0,0,1,0], #マヒ
-    [0,0,1,0,0,0,0], #コミ
-    [0.25,0,0,0,0,0,0.75], #ブン
-])
-NEKOMEME_TRANS_PROB
-
-"""
-st.code(code, language='python')
 
 #遷移確率行列を作成
 NEKOMEME_TRANS_PROB = np.array([
@@ -64,62 +26,6 @@ NEKOMEME_TRANS_PROB = np.array([
 ])
 labels = ["chipi", "chapa", "dubi", "daba", "Mági", "comi", "boom"]
 labels_jp = ["チピ", "チャパ", "ドゥビ", "ダバ", "マヒ", "コミ", "ブン"]
-
-NEKOMEME_TRANS_PROB
-
-
-st.write("遷移モデルを可視化")
-code = """
-
-import graphviz
-from graphviz import Digraph
-import numpy as np
-
-def Graphviz(prob_matrix, node_label):
-    states = len(node_label)
-    g = Digraph()
-
-    for i in range(states):
-        g.node(str(i), label=node_label[i])
-
-    for i in range(states):
-        for j in range(states):
-            if prob_matrix[i, j] > 0:
-                g.edge(str(i), str(j), label=str(round(prob_matrix[i, j], 2)))
-
-    g.attr('node', fontname = 'Meiryo UI')
-    g.attr('edge', fontname = 'Meiryo UI')
-    return g
-
-g = Graphviz(NEKOMEME_TRANS_PROB, labels)
-
-g.view()
-g.format = "png"
-g.render("data/nekomeme.png",view=True)
-
-"""
-st.code(code, language='python')
-
-
-img = Image.open("image/nekomeme.png")
-st.image(img)
-st.write("このモデルを用いて生成を行います")
-st.markdown("---")
-
-code = """
-#n単語目までのDubidubido生成
-def generate_dubidubi(transition_prob, labels, n, initial_state):
-    # 単語リストを格納する配列を初期化
-    word_list = []
-    # 現在の状態を初期状態で設定
-    current_state = np.random.choice(len(labels), p=initial_state)
-    for _ in range(n):
-        # 現在の状態に基づいて単語を選択し、リストに追加
-        word_list.append(labels[current_state])
-        # 遷移確率行列を使用して次の状態をランダムに選択
-        current_state = np.random.choice(len(labels), p=transition_prob[current_state])
-    return word_list
-"""
 #n単語目までのDubidubido生成
 def generate_dubidubi(transition_prob, labels, n, initial_state):
     # 単語リストを格納する配列を初期化
@@ -240,6 +146,102 @@ st.write("生成結果のデータを可視化して分析してみよう")
 
 #分析
 draw_count_bar(word_counts)
+
+st.markdown("---")
+st.subheader("背景")
+"""
+昨今話題の猫ミームに出てくる曲Dubidubiduを聞いていたら、これマルコフ過程じゃね...?  
+と思ったのでモデル化してみた。
+"""
+img = Image.open("image/MarcovCatmeme.png")
+st.image(img,width=500)
+"""
+書き起こしたらそれっぽくなったので、この確率モデルを使ってDubidubiduっぽい歌詞生成するプログラムを作ってみました。  
+このマルコフ連鎖は既約性(どの状態からスタートしても有限時間内に任意の状態に遷移可能)を持っているため任意の数で無限に歌詞を生成することが出来ます。
+"""
+
+
+st.markdown("---")
+st.subheader("方法")
+"""
+マルコフ連鎖を使用して、n個の単語の歌詞を生成する。  
+遷移確率行列を定義:
+"""
+
+
+
+code = """
+
+NEKOMEME_TRANS_PROB = np.array([
+    [1/2,1/2,0,0,0,0,0], #チピ
+    [0,1/2,1/2,0,0,0,0], #チャパ
+    [0,0,1/2,1/4,0,0,1/4], #ドゥビ
+    [0,0,0,1/2,1/2,0,0], #ダバ
+    [0,0,0,0,0,1,0], #マヒ
+    [0,0,1,0,0,0,0], #コミ
+    [0.25,0,0,0,0,0,0.75], #ブン
+])
+NEKOMEME_TRANS_PROB
+
+"""
+st.code(code, language='python')
+
+
+
+NEKOMEME_TRANS_PROB
+
+
+st.write("遷移モデルを可視化")
+code = """
+
+import graphviz
+from graphviz import Digraph
+import numpy as np
+
+def Graphviz(prob_matrix, node_label):
+    states = len(node_label)
+    g = Digraph()
+
+    for i in range(states):
+        g.node(str(i), label=node_label[i])
+
+    for i in range(states):
+        for j in range(states):
+            if prob_matrix[i, j] > 0:
+                g.edge(str(i), str(j), label=str(round(prob_matrix[i, j], 2)))
+
+    g.attr('node', fontname = 'Meiryo UI')
+    g.attr('edge', fontname = 'Meiryo UI')
+    return g
+
+g = Graphviz(NEKOMEME_TRANS_PROB, labels)
+
+g.view()
+g.format = "png"
+g.render("data/nekomeme.png",view=True)
+
+"""
+st.code(code, language='python')
+
+
+img = Image.open("image/nekomeme.png")
+st.image(img)
+st.write("このモデルを用いて生成を行っています")
+
+code = """
+#n単語目までのDubidubido生成
+def generate_dubidubi(transition_prob, labels, n, initial_state):
+    # 単語リストを格納する配列を初期化
+    word_list = []
+    # 現在の状態を初期状態で設定
+    current_state = np.random.choice(len(labels), p=initial_state)
+    for _ in range(n):
+        # 現在の状態に基づいて単語を選択し、リストに追加
+        word_list.append(labels[current_state])
+        # 遷移確率行列を使用して次の状態をランダムに選択
+        current_state = np.random.choice(len(labels), p=transition_prob[current_state])
+    return word_list
+"""
 
 
 

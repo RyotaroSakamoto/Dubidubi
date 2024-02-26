@@ -8,7 +8,6 @@ import seaborn as sns
 plt.rcParams['font.family'] = 'Meiryo'
 import requests
 import json
-from IPython.display import Audio
 
 
 st.title('猫ミームの歌詞自動生成')

@@ -6,6 +6,10 @@ import matplotlib.pyplot as plt
 from PIL import Image
 import seaborn as sns
 plt.rcParams['font.family'] = 'Meiryo'
+import requests
+import json
+from IPython.display import Audio
+
 
 st.title('猫ミームの歌詞自動生成')
 
@@ -154,7 +158,7 @@ match init_choice:
 
 n = st.slider("歌詞の長さを選択してください",0,100)
 lis = generate_dubidubi(NEKOMEME_TRANS_PROB,labels=labels_jp,n=n,initial_state=w)
-song = " ".join(lis)
+song = "".join(lis)
 df = pd.DataFrame(lis, columns=['Word'])
 
 # Count the occurrences of each word
@@ -221,9 +225,20 @@ st.write("生成結果のデータを可視化して分析してみよう")
 #分析
 draw_count_bar(word_counts)
 
+url = "https://api.tts.quest/v3/voicevox/synthesis"
 
-
-
+# リクエストパラメータ
+params = {
+    "text": f"{song}",
+    "speaker": 3
+}
+st.write(song)
+response = requests.post(url, params=params)
+response = response.content.decode() #バイト文字列からデコード
+res_dic = json.loads(response)
+mp3_url =  res_dic["mp3StreamingUrl"]
+audio_data = requests.get(mp3_url).content
+st.audio(audio_data)
 
 st.markdown("---")
 st.write("連絡等ありましたら下記メールアドレスまでお願いします")

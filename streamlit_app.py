@@ -10,11 +10,10 @@ import requests
 import json
 
 import matplotlib.font_manager as fm
-import pprint
 
 font_list = [f.name for f in fm.fontManager.ttflist]
+st.write(font_list)
 
-pprint.pprint(font_list)
 
 st.title('猫ミームの歌詞自動生成')
 

@@ -9,6 +9,9 @@ from matplotlib.font_manager import FontProperties
 font_path = "./font/MEIRYO.TTC"
 font_prop = FontProperties(fname=font_path)
 plt.rcParams["font.family"] = font_prop.get_name()
+st.write(font_prop)
+print(font_prop.get_name())
+
 a = [1,2]
 plt.plot(a)
 plt.title("あいうえお")

@@ -320,6 +320,6 @@ def Graphviz(prob_matrix, node_label):
     g.attr('edge', fontname = 'Meiryo UI')
     return g
 
-g = Graphviz(NEKOMEME_TRANS_PROB, labels)
+g = Graphviz(NEKOMEME_TRANS_PROB, labels_jp)
 st.graphviz_chart(g)
 

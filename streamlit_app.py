@@ -244,8 +244,29 @@ g.render("data/nekomeme.png",view=True)
 st.code(code, language='python')
 
 
-img = Image.open("image/nekomeme.png")
-st.image(img)
+from graphviz import Digraph
+import numpy as np
+
+def Graphviz(prob_matrix, node_label):
+    states = len(node_label)
+    g = Digraph()
+
+    for i in range(states):
+        g.node(str(i), label=node_label[i])
+
+    for i in range(states):
+        for j in range(states):
+            if prob_matrix[i, j] > 0:
+                g.edge(str(i), str(j), label=str(round(prob_matrix[i, j], 2)))
+
+    g.attr('node', fontname = 'Meiryo UI')
+    g.attr('edge', fontname = 'Meiryo UI')
+    return g
+
+g = Graphviz(NEKOMEME_TRANS_PROB, labels_jp)
+st.graphviz_chart(g)
+
+
 st.write("このモデルを用いて生成を行っています")
 
 code = """
@@ -279,47 +300,4 @@ st.write("ずんだもん読み上げ/VOICEVOX https://voicevox.hiroshiba.jp/")
 st.write("使用API https://voicevox.su-shiki.com/su-shikiapis/ttsquest/")
 
 
-# import graphviz
-
-# # Create a graphlib graph object
-# graph = graphviz.Digraph()
-# graph.edge('run', 'intr')
-# graph.edge('intr', 'runbl')
-# graph.edge('runbl', 'run')
-# graph.edge('run', 'kernel')
-# graph.edge('kernel', 'zombie')
-# graph.edge('kernel', 'sleep')
-# graph.edge('kernel', 'runmem')
-# graph.edge('sleep', 'swap')
-# graph.edge('swap', 'runswap')
-# graph.edge('runswap', 'new')
-# graph.edge('runswap', 'runmem')
-# graph.edge('new', 'runmem')
-# graph.edge('sleep', 'runmem')
-
-# st.graphviz_chart(graph)
-
-
-import graphviz
-from graphviz import Digraph
-import numpy as np
-
-def Graphviz(prob_matrix, node_label):
-    states = len(node_label)
-    g = Digraph()
-
-    for i in range(states):
-        g.node(str(i), label=node_label[i])
-
-    for i in range(states):
-        for j in range(states):
-            if prob_matrix[i, j] > 0:
-                g.edge(str(i), str(j), label=str(round(prob_matrix[i, j], 2)))
-
-    g.attr('node', fontname = 'Meiryo UI')
-    g.attr('edge', fontname = 'Meiryo UI')
-    return g
-
-g = Graphviz(NEKOMEME_TRANS_PROB, labels_jp)
-st.graphviz_chart(g)
 

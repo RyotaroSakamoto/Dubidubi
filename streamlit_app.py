@@ -12,10 +12,10 @@ plt.rcParams["font.family"] = font_prop.get_name()
 st.write(font_prop.get_name())
 print(font_prop.get_name())
 
-a = [1,2]
-plt.plot(a)
-plt.title("あいうえお")
-st.pyplot(plt)
+chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["あ", "い", "う"])
+
+st.line_chart(chart_data)
+
 
 
 # plt.rcParams['font.family'] = "./font/MEIRYO.TTC"

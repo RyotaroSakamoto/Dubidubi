@@ -12,9 +12,6 @@ plt.rcParams["font.family"] = font_prop.get_name()
 st.write(font_prop.get_name())
 print(font_prop.get_name())
 
-chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["あ", "い", "う"])
-
-st.line_chart(chart_data)
 
 
 
@@ -281,4 +278,29 @@ st.markdown("---")
 st.write("ずんだもん読み上げ/VOICEVOX https://voicevox.hiroshiba.jp/")
 st.write("使用API https://voicevox.su-shiki.com/su-shikiapis/ttsquest/")
 
+
+
+
+import graphviz
+from graphviz import Digraph
+import numpy as np
+
+def Graphviz(prob_matrix, node_label):
+    states = len(node_label)
+    g = Digraph()
+
+    for i in range(states):
+        g.node(str(i), label=node_label[i])
+
+    for i in range(states):
+        for j in range(states):
+            if prob_matrix[i, j] > 0:
+                g.edge(str(i), str(j), label=str(round(prob_matrix[i, j], 2)))
+
+    g.attr('node', fontname = 'Meiryo UI')
+    g.attr('edge', fontname = 'Meiryo UI')
+    return g
+
+g = Graphviz(NEKOMEME_TRANS_PROB, labels)
+st.graphviz_chart(g)
 

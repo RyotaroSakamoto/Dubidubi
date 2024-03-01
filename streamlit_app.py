@@ -5,14 +5,24 @@ import scipy as sp
 import matplotlib.pyplot as plt
 from PIL import Image
 import seaborn as sns
-plt.rcParams['font.family'] = "./font/MEIRYO.TTC"
+from matplotlib.font_manager import FontProperties
+font_path = "./font/MEIRYO.TTC"
+font_prop = FontProperties(fname=font_path)
+plt.rcParams["font.family"] = font_prop.get_name()
+a = [1,2]
+plt.plot(a)
+plt.title("あいうえお")
+st.pyplot(plt)
+
+
+# plt.rcParams['font.family'] = "./font/MEIRYO.TTC"
 import requests
 import json
 
 import matplotlib.font_manager as fm
 
 font_list = [f.name for f in fm.fontManager.ttflist]
-st.write(font_list)
+
 
 
 st.title('猫ミームの歌詞自動生成')

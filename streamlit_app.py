@@ -5,7 +5,7 @@ import scipy as sp
 import matplotlib.pyplot as plt
 from PIL import Image
 import seaborn as sns
-plt.rcParams['font.family'] = 'Meiryo'
+plt.rcParams['font.family'] = 'MS Gothic'
 import requests
 import json
 
